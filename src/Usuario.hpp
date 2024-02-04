@@ -9,6 +9,7 @@ private:
 public:
     Usuario(std::string);
     std::string recuperaNome() const;
+    std::string recuperaPrimeiroNome() const;
 };
 
 #endif /* Usuario_hpp */

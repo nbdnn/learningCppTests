@@ -8,3 +8,8 @@ float Lance::recuperaValor() const
 {
     return valor;
 }
+
+std::string Lance::recuperaNomeUsuario() const
+{
+    return usuario.recuperaNome();
+}
