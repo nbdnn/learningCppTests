@@ -1,9 +1,8 @@
 #include "Avaliador.hpp"
+#include <algorithm>
 
 void Avaliador::avalia(Leilao leilao)
 {
-    maiorValor = 0;
-
     std::vector<Lance> lances = leilao.recuperaLances();
 
     for (Lance lance : lances){
@@ -14,6 +13,11 @@ void Avaliador::avalia(Leilao leilao)
             menorValor = lance.recuperaValor();
         }
     }
+
+    std::sort(lances.begin(), lances.end(), Avaliador::ordenaLances);
+
+    size_t tamanho = lances.size() > 3 ? 3 : lances.size();
+    miores3Lances = std::vector<Lance>(lances.begin(), lances.begin() + tamanho);
 }
 
 float Avaliador::recuperaMaiorValor() const
@@ -24,4 +28,14 @@ float Avaliador::recuperaMaiorValor() const
 float Avaliador::recuperaMenorValor() const
 {
     return menorValor;
+}
+
+std::vector<Lance> Avaliador::recupera3MaioresLances() const
+{
+    return miores3Lances;
+}
+
+bool Avaliador::ordenaLances(const Lance& lance1, const Lance& lance2)
+{
+    return lance1.recuperaValor() > lance2.recuperaValor();
 }

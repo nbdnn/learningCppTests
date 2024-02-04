@@ -1,1 +1,9 @@
 .vscode
+.gitignore
+
+*/*.obj
+*/*.exe
+*/*ilk
+*/*.pdb
+
+build
